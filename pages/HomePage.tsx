@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
       <section className="relative bg-soft-green-light py-24 sm:py-32 lg:py-40">
         <div className="absolute inset-0">
             <img src="lotte_header.jpg" alt="Achtergrondafbeelding voor de coachingpraktijk van Lotte Gasenbeek" className="w-full h-full object-cover opacity-20"/>
-            <div className="absolute inset-0 bg-gradient-to-t from-cream via-cream/80 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-cream from-33% via-cream/30 via-66% to-transparent"></div>
         </div>
         <div className="container mx-auto px-6 text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-dark-green tracking-tight">

@@ -12,16 +12,17 @@ const HomePage: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-cream from-33% via-cream/30 via-66% to-transparent"></div>
         </div>
         <div className="container mx-auto px-6 text-center relative z-10">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-dark-green tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-dark-green tracking-tight animate-fade-in-down" style={{ animationDelay: '0.2s' }}>
             Ruimte voor jouw verhaal
           </h1>
-          <p className="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-text-light leading-8">
+          <p className="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-text-light leading-8 animate-fade-in-down" style={{ animationDelay: '0.4s' }}>
             Psychologische coaching voor jongvolwassenen en young professionals. Samen vinden we de balans die bij jou past, in een warme, persoonlijke en gelijkwaardige sfeer.
           </p>
           <div className="mt-10">
             <Link
               to="/kennismakingsgesprek"
-              className="inline-block bg-ocher hover:bg-ocher-dark text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-102 duration-300"
+              className="inline-block bg-ocher hover:bg-ocher-dark text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-102 duration-300 animate-fade-in-down"
+              style={{ animationDelay: '0.6s' }}
             >
               Plan een gratis kennismaking
             </Link>

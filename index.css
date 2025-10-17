@@ -9,6 +9,11 @@
   }
 }
 
-h1 {
+.animate-fade-in-down {
+  opacity: 0; /* Ensures element is hidden before animation starts */
   animation: fadeInSlideDown 1s ease-out forwards;
+}
+
+h1 {
+  /* Animation for h1 is now handled by the utility class or directly */
 }

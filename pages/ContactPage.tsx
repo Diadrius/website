@@ -4,9 +4,12 @@ import { loadMarkdownPage, PageData } from '../utils/markdown';
 const ContactPage: React.FC = () => {
   const [pageData, setPageData] = useState<PageData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState('');
 
   useEffect(() => {
@@ -21,19 +24,40 @@ const ContactPage: React.FC = () => {
       });
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !message) {
-        setStatus('Vul alstublieft alle velden in.');
-        return;
+    setIsSubmitting(true);
+    setStatus('');
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "8834346c-a50c-45a7-a30f-9a72d2b236d0",
+          ...formData
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus('Bericht succesvol verzonden!');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus('Verzenden mislukt. Probeer het opnieuw.');
+      }
+    } catch (error) {
+      setStatus('Er is een fout opgetreden. Probeer het opnieuw.');
+    } finally {
+      setIsSubmitting(false);
     }
-    const subject = `Contactverzoek van ${name}`;
-    const body = `Naam: ${name}\nE-mail: ${email}\n\nBericht:\n${message}`;
-    window.location.href = `mailto:${pageData?.emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setStatus('Bedankt! Je e-mailprogramma wordt geopend om het bericht te versturen.');
-    setName('');
-    setEmail('');
-    setMessage('');
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
   if (loading) {
@@ -73,8 +97,8 @@ const ContactPage: React.FC = () => {
                         type="text"
                         name="name"
                         id="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={formData.name}
+                        onChange={handleChange}
                         className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-ocher focus:border-ocher"
                         required
                     />
@@ -85,8 +109,8 @@ const ContactPage: React.FC = () => {
                         type="email"
                         name="email"
                         id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={formData.email}
+                        onChange={handleChange}
                         className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-ocher focus:border-ocher"
                         required
                     />
@@ -97,8 +121,8 @@ const ContactPage: React.FC = () => {
                         name="message"
                         id="message"
                         rows={5}
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
+                        value={formData.message}
+                        onChange={handleChange}
                         className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-ocher focus:border-ocher"
                         required
                     ></textarea>
@@ -106,9 +130,10 @@ const ContactPage: React.FC = () => {
                 <div>
                     <button
                         type="submit"
-                        className="w-full bg-ocher hover:bg-ocher-dark text-white font-semibold font-serif py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300"
+                        disabled={isSubmitting}
+                        className="w-full bg-ocher hover:bg-ocher-dark text-white font-semibold font-serif py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        Verstuur
+                        {isSubmitting ? 'Verzenden...' : 'Verstuur'}
                     </button>
                 </div>
                 {status && <p className="text-center text-sm text-text-light">{status}</p>}

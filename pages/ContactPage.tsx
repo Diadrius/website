@@ -35,6 +35,7 @@ const ContactPage: React.FC = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           access_key: "8834346c-a50c-45a7-a30f-9a72d2b236d0",
+          subject: `Nieuw contactbericht van ${formData.name}`,
           ...formData
         }),
       });

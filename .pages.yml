@@ -1,12 +1,12 @@
 media:
-  input: media
+  input: public/media
   output: /media
 
 content:
   - name: home
     label: Home Page
     type: file
-    path: 'content/pages/home.md'
+    path: 'public/content/pages/home.md'
     fields:
       - name: title
         label: Title
@@ -40,7 +40,7 @@ content:
   - name: about
     label: About Page
     type: file
-    path: 'content/pages/about.md'
+    path: 'public/content/pages/about.md'
     fields:
       - name: title
         label: Title
@@ -75,7 +75,7 @@ content:
   - name: contact
     label: Contact Page
     type: file
-    path: 'content/pages/contact.md'
+    path: 'public/content/pages/contact.md'
     fields:
       - name: title
         label: Title
@@ -100,7 +100,7 @@ content:
   - name: method
     label: Method Page
     type: file
-    path: 'content/pages/method.md'
+    path: 'public/content/pages/method.md'
     fields:
       - name: title
         label: Title
@@ -132,7 +132,7 @@ content:
   - name: rates
     label: Rates Page
     type: file
-    path: 'content/pages/rates.md'
+    path: 'public/content/pages/rates.md'
     fields:
       - name: title
         label: Title
@@ -187,7 +187,7 @@ content:
   - name: kennismakingsgesprek
     label: Kennismakingsgesprek Page
     type: file
-    path: 'content/pages/kennismakingsgesprek.md'
+    path: 'public/content/pages/kennismakingsgesprek.md'
     fields:
       - name: title
         label: Title
@@ -212,7 +212,7 @@ content:
   - name: forwhom
     label: For Whom Page
     type: file
-    path: 'content/pages/forwhom.md'
+    path: 'public/content/pages/forwhom.md'
     fields:
       - name: title
         label: Title

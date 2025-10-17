@@ -17,7 +17,7 @@ export interface PageData {
 
 export async function loadMarkdownPage(pageName: string): Promise<PageData> {
   try {
-    const response = await fetch(`/content/pages/${pageName}.md`);
+    const response = await fetch(`${import.meta.env.BASE_URL}content/pages/${pageName}.md`);
     if (!response.ok) {
       throw new Error(`Failed to fetch ${pageName}.md: ${response.statusText}`);
     }
@@ -25,9 +25,23 @@ export async function loadMarkdownPage(pageName: string): Promise<PageData> {
     
     // Parse frontmatter and content
     const parsed = fm(text);
+    const attributes = parsed.attributes as Record<string, any>;
+    
+    // Fix image paths to include base URL
+    const baseUrl = import.meta.env.BASE_URL;
+    const fixedAttributes: Record<string, any> = {};
+    
+    for (const [key, value] of Object.entries(attributes)) {
+      // If the value is a string starting with /media/ or /content/, prepend base URL
+      if (typeof value === 'string' && (value.startsWith('/media/') || value.startsWith('/content/'))) {
+        fixedAttributes[key] = `${baseUrl}${value.substring(1)}`;
+      } else {
+        fixedAttributes[key] = value;
+      }
+    }
     
     return {
-      ...parsed.attributes,
+      ...fixedAttributes,
       body: parsed.body ? marked(parsed.body) : ''
     } as PageData;
   } catch (error) {

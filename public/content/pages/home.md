@@ -1,5 +1,5 @@
 ---
-title: Ruimte voor jouw verhaal test
+title: Ruimte voor jouw verhaal
 subtitle: Psychologische coaching voor jongvolwassenen en young professionals.
   Samen vinden we de balans die bij jou past, in een warme, persoonlijke en
   gelijkwaardige sfeer.

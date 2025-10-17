@@ -1,29 +1,25 @@
 import React, { useState } from 'react';
-import CalendarPicker from '../components/CalendarPicker';
 
 const KennismakingsgesprekPage: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [discussionTopic, setDiscussionTopic] = useState('');
-  const [selectedDates, setSelectedDates] = useState<Date[]>([]);
   const [status, setStatus] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !discussionTopic || selectedDates.length === 0) {
-        setStatus('Vul alstublieft alle verplichte velden in en selecteer minimaal één datum.');
+    if (!name || !email || !discussionTopic) {
+        setStatus('Vul alstublieft alle verplichte velden in.');
         return;
     }
 
-    const formattedDates = selectedDates.map(date => date.toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })).join(', ');
     const subject = `Verzoek kennismakingsgesprek van ${name}`;
-    const body = `Naam: ${name}\nE-mail: ${email}\n\nGeselecteerde datums: ${formattedDates}\n\nOnderwerp/Thema voor gesprek:\n${discussionTopic}\n\nL.S., Ik wil graag een gratis en vrijblijvend kennismakingsgesprek inplannen.`;
+    const body = `Naam: ${name}\nE-mail: ${email}\n\nOnderwerp/Thema voor gesprek:\n${discussionTopic}\n\nL.S., Ik wil graag een gratis en vrijblijvend kennismakingsgesprek inplannen.`;
     window.location.href = `mailto:lottegasenbeek@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setStatus('Bedankt! Je e-mailprogramma wordt geopend om het bericht te versturen.');
     setName('');
     setEmail('');
     setDiscussionTopic('');
-    setSelectedDates([]);
   };
 
   return (
@@ -41,13 +37,6 @@ const KennismakingsgesprekPage: React.FC = () => {
         <div className="mt-16 max-w-2xl mx-auto grid grid-cols-1 gap-12">
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="mb-6">
-                    <label className="block text-sm font-medium text-dark-green mb-2">Voorkeursdata</label>
-                    <CalendarPicker
-                        selectedDates={selectedDates}
-                        onDateChange={setSelectedDates}
-                    />
-                </div>
                 <div>
                     <label htmlFor="name" className="block text-sm font-medium text-dark-green">Naam</label>
                     <input

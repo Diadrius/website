@@ -18,7 +18,7 @@ const AboutPage: React.FC = () => {
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
         <div className="md:col-span-1 flex justify-center">
           <img
-            src="https://picsum.photos/seed/lotteportret/400/500"
+            src="lotte_portret.jpg"
             alt="Professionele foto van Lotte Gasenbeek"
             className="rounded-xl shadow-lg object-cover w-full h-auto max-w-xs md:max-w-full"
           />

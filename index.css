@@ -15,5 +15,6 @@
 }
 
 h1 {
-  /* Animation for h1 is now handled by the utility class or directly */
+  animation: fadeInSlideDown 1s ease-out forwards;
+  opacity: 0; /* Ensures h1 is hidden before animation starts */
 }

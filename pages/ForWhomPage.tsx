@@ -65,7 +65,7 @@ const ForWhomPage: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-16 text-center bg-white p-10 rounded-xl max-w-3xl mx-auto shadow-lg">
+        <div className="mt-16 text-center bg-white p-10 rounded-xl max-w-4xl mx-auto shadow-lg">
           <h3 className="text-2xl font-serif font-semibold text-dark-green">Staat jouw thema er niet tussen?</h3>
           <p className="mt-4 text-text-light">Geen zorgen. Ieder verhaal is uniek. Als je voelt dat je hulp kunt gebruiken, ben je van harte welkom. We kunnen tijdens een kennismaking altijd bespreken wat ik voor je kan betekenen.</p>
           <div className="mt-8">

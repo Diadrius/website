@@ -65,7 +65,7 @@ const RatesPage: React.FC = () => {
            </div>
         </div>
          <div className="text-center pt-4">
-              <Link to="/contact" className="inline-block bg-ocher hover:bg-ocher-dark text-white font-bold font-serif py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300">
+              <Link to="/kennismakingsgesprek" className="inline-block bg-ocher hover:bg-ocher-dark text-white font-bold font-serif py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300">
                 Plan je gratis kennismaking
               </Link>
             </div>

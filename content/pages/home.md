@@ -1,7 +1,7 @@
 ---
 title: "Ruimte voor jouw verhaal"
 subtitle: "Psychologische coaching voor jongvolwassenen en young professionals. Samen vinden we de balans die bij jou past, in een warme, persoonlijke en gelijkwaardige sfeer."
-heroImage: "lotte_header.jpg"
+heroImage: "/media/images/lotte_header.jpg"
 heroImageAlt: "Achtergrondafbeelding voor de coachingpraktijk van Lotte Gasenbeek"
 ctaText: "Plan een gratis kennismaking"
 ctaLink: "/kennismakingsgesprek"

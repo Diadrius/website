@@ -1,10 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { loadMarkdownPage, PageData } from '../utils/markdown';
 
 const KennismakingsgesprekPage: React.FC = () => {
+  const [pageData, setPageData] = useState<PageData | null>(null);
+  const [loading, setLoading] = useState(true);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [discussionTopic, setDiscussionTopic] = useState('');
   const [status, setStatus] = useState('');
+
+  useEffect(() => {
+    loadMarkdownPage('kennismakingsgesprek')
+      .then(data => {
+        setPageData(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to load page:', err);
+        setLoading(false);
+      });
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,15 +37,31 @@ const KennismakingsgesprekPage: React.FC = () => {
     setDiscussionTopic('');
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg text-text-light">Loading...</p>
+      </div>
+    );
+  }
+
+  if (!pageData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg text-red-600">Error loading page content</p>
+      </div>
+    );
+  }
+
   return (
     <div className="py-16 sm:py-24 bg-cream">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl font-serif font-bold text-dark-green sm:text-5xl">
-            Vraag je gratis kennismakingsgesprek aan
+            {pageData.title}
           </h1>
           <p className="mt-6 text-lg text-text-light leading-8">
-            Zet de eerste stap door te kiezen voor een gratis en vrijblijvend kennismakingsgesprek. Vul het onderstaande formulier in om direct contact op te nemen. Ik neem zo snel mogelijk contact met je op.
+            {pageData.subtitle}
           </p>
         </div>
 
@@ -38,7 +69,7 @@ const KennismakingsgesprekPage: React.FC = () => {
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-dark-green">Naam</label>
+                    <label htmlFor="name" className="block text-sm font-medium text-dark-green">{pageData.formNameLabel}</label>
                     <input
                         type="text"
                         name="name"
@@ -50,7 +81,7 @@ const KennismakingsgesprekPage: React.FC = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-dark-green">E-mail</label>
+                    <label htmlFor="email" className="block text-sm font-medium text-dark-green">{pageData.formEmailLabel}</label>
                     <input
                         type="email"
                         name="email"
@@ -62,7 +93,7 @@ const KennismakingsgesprekPage: React.FC = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="discussionTopic" className="block text-sm font-medium text-dark-green">Waarover wil je graag in gesprek?</label>
+                    <label htmlFor="discussionTopic" className="block text-sm font-medium text-dark-green">{pageData.formTopicLabel}</label>
                     <textarea
                         name="discussionTopic"
                         id="discussionTopic"
@@ -78,7 +109,7 @@ const KennismakingsgesprekPage: React.FC = () => {
                         type="submit"
                         className="w-full bg-ocher hover:bg-ocher-dark text-white font-semibold font-serif py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300"
                     >
-                        Verstuur
+                        {pageData.formSubmitText}
                     </button>
                 </div>
                 {status && <p className="text-center text-sm text-text-light">{status}</p>}

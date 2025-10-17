@@ -1,11 +1,25 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { loadMarkdownPage, PageData } from '../utils/markdown';
 
 const ContactPage: React.FC = () => {
+  const [pageData, setPageData] = useState<PageData | null>(null);
+  const [loading, setLoading] = useState(true);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('');
+
+  useEffect(() => {
+    loadMarkdownPage('contact')
+      .then(data => {
+        setPageData(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to load page:', err);
+        setLoading(false);
+      });
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -15,22 +29,38 @@ const ContactPage: React.FC = () => {
     }
     const subject = `Contactverzoek van ${name}`;
     const body = `Naam: ${name}\nE-mail: ${email}\n\nBericht:\n${message}`;
-    window.location.href = `mailto:lottegasenbeek@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${pageData?.emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setStatus('Bedankt! Je e-mailprogramma wordt geopend om het bericht te versturen.');
     setName('');
     setEmail('');
     setMessage('');
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg text-text-light">Loading...</p>
+      </div>
+    );
+  }
+
+  if (!pageData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg text-red-600">Error loading page content</p>
+      </div>
+    );
+  }
+
   return (
     <div className="py-16 sm:py-24 bg-cream">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl font-serif font-bold text-dark-green sm:text-5xl">
-            Contact
+            {pageData.title}
           </h1>
           <p className="mt-6 text-lg text-text-light leading-8">
-            Heb je vragen, wil je een afspraak maken of ben je geïnteresseerd in een samenwerking? Neem gerust contact met me op via onderstaand formulier of stuur direct een e-mail. Ik neem zo snel mogelijk contact met je op.
+            {pageData.subtitle}
           </p>
         </div>
 
@@ -91,15 +121,15 @@ const ContactPage: React.FC = () => {
                     <div className="flex items-start">
                         <svg className="w-6 h-6 text-ocher flex-shrink-0 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                         <div>
-                            <h4 className="font-semibold text-dark-green">Locatie</h4>
-                            <p>Het Gebouw, Rotterdam</p>
+                            <h4 className="font-semibold text-dark-green">{pageData.locationTitle}</h4>
+                            <p>{pageData.locationText}</p>
                         </div>
                     </div>
                      <div className="flex items-start">
                         <svg className="w-6 h-6 text-ocher flex-shrink-0 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                         <div>
-                            <h4 className="font-semibold text-dark-green">E-mail</h4>
-                            <a href="mailto:lottegasenbeek@gmail.com" className="hover:text-ocher transition-colors">lottegasenbeek@gmail.com</a>
+                            <h4 className="font-semibold text-dark-green">{pageData.emailTitle}</h4>
+                            <a href={`mailto:${pageData.emailAddress}`} className="hover:text-ocher transition-colors">{pageData.emailAddress}</a>
                         </div>
                     </div>
                 </div>

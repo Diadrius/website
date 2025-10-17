@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { loadMarkdownPage, PageData } from '../utils/markdown';
 
 const PageWrapper: React.FC<{ children: React.ReactNode, title: string }> = ({ children, title }) => (
     <div className="py-16 sm:py-24 bg-cream">
@@ -12,38 +13,53 @@ const PageWrapper: React.FC<{ children: React.ReactNode, title: string }> = ({ c
     </div>
 );
 
-const steps = [
-    {
-        number: 1,
-        title: 'Vrijblijvende Kennismaking',
-        description: 'We starten met een gratis gesprek van 20 minuten (online of telefonisch). Dit is bedoeld om te zien of er een klik is en of mijn aanpak bij jouw vraag past. Je kunt je verhaal doen en al je vragen stellen.'
-    },
-    {
-        number: 2,
-        title: 'Het Traject',
-        description: 'Als we besluiten samen verder te gaan, plannen we de sessies. We stellen samen doelen op die voor jou belangrijk zijn. Een traject is meestal kortdurend en gericht op concrete verandering.'
-    },
-    {
-        number: 3,
-        title: 'Tussentijdse Evaluatie',
-        description: 'Halverwege het traject staan we stil bij de voortgang. We bespreken wat goed gaat, waar je nog aan wilt werken en of we de doelen eventueel moeten bijstellen. Jouw feedback is hierin leidend.'
-    },
-    {
-        number: 4,
-        title: 'Jouw Manier',
-        description: 'Elke sessie is afgestemd op jou. We gebruiken gesprekken, praktische oefeningen en bewezen effectieve methoden uit o.a. de cognitieve gedragstherapie (CGT) en Acceptance and Commitment Therapy (ACT).'
-    }
-];
-
+interface Step {
+    number: number;
+    title: string;
+    description: string;
+}
 
 const MethodPage: React.FC = () => {
+  const [pageData, setPageData] = useState<PageData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadMarkdownPage('method')
+      .then(data => {
+        setPageData(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to load page:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg text-text-light">Loading...</p>
+      </div>
+    );
+  }
+
+  if (!pageData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg text-red-600">Error loading page content</p>
+      </div>
+    );
+  }
+
+  const steps = pageData.steps as Step[] || [];
+
   return (
-    <PageWrapper title="Werkwijze & Aanbod">
+    <PageWrapper title={pageData.title}>
       <div className="max-w-4xl mx-auto space-y-20">
         
         {/* Werkwijze Section */}
         <section>
-          <h2 className="text-3xl font-serif font-bold text-dark-green text-center mb-12">Hoe gaan we te werk?</h2>
+          <h2 className="text-3xl font-serif font-bold text-dark-green text-center mb-12">{pageData.methodTitle}</h2>
           <div className="max-w-2xl mx-auto">
             <div className="relative">
                 {/* Vertical Connector Line */}
@@ -70,19 +86,19 @@ const MethodPage: React.FC = () => {
 
         {/* Aanbod Section */}
         <section className="bg-white p-8 sm:p-12 rounded-xl shadow-lg border border-gray-200">
-           <h2 className="text-3xl font-serif font-bold text-dark-green text-center mb-8">Mijn Aanbod</h2>
+           <h2 className="text-3xl font-serif font-bold text-dark-green text-center mb-8">{pageData.offerTitle}</h2>
            <div className="flex flex-col md:flex-row items-center justify-center md:justify-between bg-soft-green-light p-6 rounded-lg">
                 <div>
-                    <h3 className="font-serif text-xl font-semibold text-dark-green">Individuele Coachingsessie</h3>
-                    <p className="text-text-light mt-1">Een-op-een gesprek gericht op jouw persoonlijke doelen.</p>
+                    <h3 className="font-serif text-xl font-semibold text-dark-green">{pageData.offerName}</h3>
+                    <p className="text-text-light mt-1">{pageData.offerDescription}</p>
                 </div>
                 <div className="mt-4 md:mt-0 text-lg font-bold text-dark-green">
-                    60 minuten
+                    {pageData.offerDuration}
                 </div>
             </div>
             <div className="text-center mt-8">
-              <Link to="/contact" className="inline-block bg-ocher hover:bg-ocher-dark text-white font-semibold font-serif py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300">
-                Plan een kennismaking
+              <Link to={pageData.ctaLink} className="inline-block bg-ocher hover:bg-ocher-dark text-white font-semibold font-serif py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300">
+                {pageData.ctaText}
               </Link>
             </div>
         </section>

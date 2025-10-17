@@ -1,12 +1,12 @@
 media:
-  input: public
-  output: /
+  input: media
+  output: /media
 
 content:
   - name: home
     label: Home Page
     type: file
-    path: 'public/content/pages/home.md'
+    path: 'content/pages/home.md'
     fields:
       - name: title
         label: Title
@@ -35,4 +35,213 @@ content:
         type: text
       - name: themesTitle
         label: Themes Title
+        type: string
+  
+  - name: about
+    label: About Page
+    type: file
+    path: 'content/pages/about.md'
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: quote
+        label: Quote
+        type: text
+      - name: image
+        label: Image
+        type: string
+      - name: imageAlt
+        label: Image Alt Text
+        type: string
+      - name: approachTitle
+        label: Approach Title
+        type: string
+      - name: approachText
+        label: Approach Text
+        type: text
+      - name: educationTitle
+        label: Education Title
+        type: string
+      - name: educationItems
+        label: Education Items
+        type: list
+        fields:
+          - name: item
+            label: Item
+            type: string
+  
+  - name: contact
+    label: Contact Page
+    type: file
+    path: 'content/pages/contact.md'
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: subtitle
+        label: Subtitle
+        type: text
+      - name: locationTitle
+        label: Location Title
+        type: string
+      - name: locationText
+        label: Location Text
+        type: string
+      - name: emailTitle
+        label: Email Title
+        type: string
+      - name: emailAddress
+        label: Email Address
+        type: string
+  
+  - name: method
+    label: Method Page
+    type: file
+    path: 'content/pages/method.md'
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: methodTitle
+        label: Method Title
+        type: string
+      - name: steps
+        label: Steps
+        type: list
+        fields:
+          - name: number
+            label: Number
+            type: number
+          - name: title
+            label: Step Title
+            type: string
+          - name: description
+            label: Step Description
+            type: text
+      - name: offerTitle
+        label: Offer Title
+        type: string
+      - name: offerName
+        label: Offer Name
+        type: string
+      - name: offerDescription
+        label: Offer Description
+        type: text
+      - name: offerDuration
+        label: Offer Duration
+        type: string
+      - name: ctaText
+        label: CTA Text
+        type: string
+      - name: ctaLink
+        label: CTA Link
+        type: string
+  
+  - name: rates
+    label: Rates Page
+    type: file
+    path: 'content/pages/rates.md'
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: introSessionTitle
+        label: Intro Session Title
+        type: string
+      - name: introSessionDescription
+        label: Intro Session Description
+        type: string
+      - name: introSessionPrice
+        label: Intro Session Price
+        type: string
+      - name: coachingSessionTitle
+        label: Coaching Session Title
+        type: string
+      - name: coachingSessionDescription
+        label: Coaching Session Description
+        type: string
+      - name: coachingSessionPrice
+        label: Coaching Session Price
+        type: string
+      - name: practicalInfoTitle
+        label: Practical Info Title
+        type: string
+      - name: compensationTitle
+        label: Compensation Title
+        type: string
+      - name: compensationText
+        label: Compensation Text
+        type: text
+      - name: paymentTitle
+        label: Payment Title
+        type: string
+      - name: paymentText
+        label: Payment Text
+        type: text
+      - name: cancellationTitle
+        label: Cancellation Title
+        type: string
+      - name: cancellationText
+        label: Cancellation Text
+        type: text
+      - name: ctaText
+        label: CTA Text
+        type: string
+      - name: ctaLink
+        label: CTA Link
+        type: string
+  
+  - name: kennismakingsgesprek
+    label: Kennismakingsgesprek Page
+    type: file
+    path: 'content/pages/kennismakingsgesprek.md'
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: subtitle
+        label: Subtitle
+        type: text
+      - name: formNameLabel
+        label: Form Name Label
+        type: string
+      - name: formEmailLabel
+        label: Form Email Label
+        type: string
+      - name: formTopicLabel
+        label: Form Topic Label
+        type: string
+      - name: formSubmitText
+        label: Form Submit Text
+        type: string
+  
+  - name: forwhom
+    label: For Whom Page
+    type: file
+    path: 'content/pages/forwhom.md'
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: subtitle
+        label: Subtitle
+        type: text
+      - name: closingTitle
+        label: Closing Title
+        type: string
+      - name: closingText
+        label: Closing Text
+        type: text
+      - name: ctaText
+        label: CTA Text
+        type: string
+      - name: ctaLink
+        label: CTA Link
         type: string

@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { themes } from '../themes';
+import { loadMarkdownPage, PageData } from '../utils/markdown';
 
 const ForWhomPage: React.FC = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(themes[0]?.id || '');
+  const [pageData, setPageData] = useState<PageData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadMarkdownPage('forwhom')
+      .then(data => {
+        setPageData(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to load page:', err);
+        setLoading(false);
+      });
+  }, []);
 
   useEffect(() => {
     if (location.hash) {
@@ -22,15 +37,31 @@ const ForWhomPage: React.FC = () => {
     window.history.pushState(null, '', `#${themeId}`);
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg text-text-light">Loading...</p>
+      </div>
+    );
+  }
+
+  if (!pageData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg text-red-600">Error loading page content</p>
+      </div>
+    );
+  }
+
   return (
     <div className="py-16 sm:py-24 bg-soft-green-light">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl font-serif font-bold text-dark-green sm:text-5xl">
-            Herken jij je hierin?
+            {pageData.title}
           </h1>
           <p className="mt-6 text-lg text-text-light leading-8">
-            Coaching is voor iedereen die wil groeien. Misschien loop je vast in specifieke patronen of sta je op een kruispunt in je leven. Hieronder vind je een aantal thema's waar we samen aan kunnen werken.
+            {pageData.subtitle}
           </p>
         </div>
 
@@ -66,11 +97,11 @@ const ForWhomPage: React.FC = () => {
         </div>
 
         <div className="mt-16 text-center bg-white p-10 rounded-xl max-w-4xl mx-auto shadow-lg">
-          <h3 className="text-2xl font-serif font-semibold text-dark-green">Staat jouw thema er niet tussen?</h3>
-          <p className="mt-4 text-text-light">Geen zorgen. Ieder verhaal is uniek. Als je voelt dat je hulp kunt gebruiken, ben je van harte welkom. We kunnen tijdens een kennismaking altijd bespreken wat ik voor je kan betekenen.</p>
+          <h3 className="text-2xl font-serif font-semibold text-dark-green">{pageData.closingTitle}</h3>
+          <p className="mt-4 text-text-light">{pageData.closingText}</p>
           <div className="mt-8">
-            <Link to="/contact" className="inline-block bg-ocher hover:bg-ocher-dark text-white font-semibold font-serif py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300">
-              Neem vrijblijvend contact op
+            <Link to={pageData.ctaLink} className="inline-block bg-ocher hover:bg-ocher-dark text-white font-semibold font-serif py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300">
+              {pageData.ctaText}
             </Link>
           </div>
         </div>

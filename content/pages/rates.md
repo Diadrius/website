@@ -1,0 +1,18 @@
+---
+title: "Tarieven"
+introSessionTitle: "Vrijblijvend kennismakingsgesprek"
+introSessionDescription: "Online of telefonisch, 20 minuten"
+introSessionPrice: "Gratis"
+coachingSessionTitle: "Individuele coachingsessie"
+coachingSessionDescription: "60 minuten"
+coachingSessionPrice: "€ 80,-"
+practicalInfoTitle: "Praktische Informatie"
+compensationTitle: "Vergoeding"
+compensationText: "De coaching is voor zelfbetalende cliënten en wordt niet vergoed door de zorgverzekeraar. Dit betekent dat je geen verwijzing van de huisarts nodig hebt en we snel kunnen starten."
+paymentTitle: "Betaling"
+paymentText: "Na afloop van elke sessie ontvang je een factuur die je per bankoverschrijving kunt voldoen."
+cancellationTitle: "Annulering"
+cancellationText: "Een afspraak kan tot 24 uur van tevoren kosteloos worden geannuleerd of verzet. Bij latere annulering wordt de sessie in rekening gebracht."
+ctaText: "Plan je gratis kennismaking"
+ctaLink: "/kennismakingsgesprek"
+---

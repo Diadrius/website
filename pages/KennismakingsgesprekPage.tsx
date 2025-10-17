@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
+import CalendarPicker from '../components/CalendarPicker';
 
 const KennismakingsgesprekPage: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [discussionTopic, setDiscussionTopic] = useState('');
+  const [selectedDates, setSelectedDates] = useState<Date[]>([]);
   const [status, setStatus] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !message) {
-        setStatus('Vul alstublieft alle velden in.');
+    if (!name || !email || !discussionTopic || selectedDates.length === 0) {
+        setStatus('Vul alstublieft alle verplichte velden in en selecteer minimaal één datum.');
         return;
     }
+
+    const formattedDates = selectedDates.map(date => date.toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })).join(', ');
     const subject = `Verzoek kennismakingsgesprek van ${name}`;
-    const body = `Naam: ${name}\nE-mail: ${email}\n\nBericht:\n${message}\n\nL.S., Ik wil graag een gratis en vrijblijvend kennismakingsgesprek inplannen.`;
+    const body = `Naam: ${name}\nE-mail: ${email}\n\nGeselecteerde datums: ${formattedDates}\n\nOnderwerp/Thema voor gesprek:\n${discussionTopic}\n\nL.S., Ik wil graag een gratis en vrijblijvend kennismakingsgesprek inplannen.`;
     window.location.href = `mailto:lottegasenbeek@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setStatus('Bedankt! Je e-mailprogramma wordt geopend om het bericht te versturen.');
     setName('');
     setEmail('');
-    setMessage('');
+    setDiscussionTopic('');
+    setSelectedDates([]);
   };
 
   return (
@@ -33,9 +38,16 @@ const KennismakingsgesprekPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="mt-16 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="mt-16 max-w-2xl mx-auto grid grid-cols-1 gap-12">
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="mb-6">
+                    <label className="block text-sm font-medium text-dark-green mb-2">Voorkeursdata</label>
+                    <CalendarPicker
+                        selectedDates={selectedDates}
+                        onDateChange={setSelectedDates}
+                    />
+                </div>
                 <div>
                     <label htmlFor="name" className="block text-sm font-medium text-dark-green">Naam</label>
                     <input
@@ -61,13 +73,13 @@ const KennismakingsgesprekPage: React.FC = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-dark-green">Bericht</label>
+                    <label htmlFor="discussionTopic" className="block text-sm font-medium text-dark-green">Waarover wil je graag in gesprek?</label>
                     <textarea
-                        name="message"
-                        id="message"
+                        name="discussionTopic"
+                        id="discussionTopic"
                         rows={5}
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
+                        value={discussionTopic}
+                        onChange={(e) => setDiscussionTopic(e.target.value)}
                         className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-ocher focus:border-ocher"
                         required
                     ></textarea>
@@ -82,27 +94,6 @@ const KennismakingsgesprekPage: React.FC = () => {
                 </div>
                 {status && <p className="text-center text-sm text-text-light">{status}</p>}
             </form>
-
-            {/* Info */}
-            <div className="bg-soft-green-light p-8 rounded-xl border border-soft-green flex flex-col justify-center">
-                <h3 className="text-2xl font-serif font-semibold text-dark-green mb-4">Praktijkinformatie</h3>
-                <div className="space-y-4 text-text-light">
-                    <div className="flex items-start">
-                        <svg className="w-6 h-6 text-ocher flex-shrink-0 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                        <div>
-                            <h4 className="font-semibold text-dark-green">Locatie</h4>
-                            <p>Het Gebouw, Rotterdam</p>
-                        </div>
-                    </div>
-                     <div className="flex items-start">
-                        <svg className="w-6 h-6 text-ocher flex-shrink-0 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 3 0 002 2z" /></svg>
-                        <div>
-                            <h4 className="font-semibold text-dark-green">E-mail</h4>
-                            <a href="mailto:lottegasenbeek@gmail.com" className="hover:text-ocher transition-colors">lottegasenbeek@gmail.com</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
       </div>
     </div>

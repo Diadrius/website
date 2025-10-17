@@ -76,7 +76,7 @@ const ContactPage: React.FC = () => {
                 <div>
                     <button
                         type="submit"
-                        className="w-full bg-ocher hover:bg-ocher-dark text-white font-bold font-serif py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300"
+                        className="w-full bg-ocher hover:bg-ocher-dark text-white font-semibold font-serif py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300"
                     >
                         Verstuur
                     </button>

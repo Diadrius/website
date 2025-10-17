@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
           <div className="mt-10">
             <Link
               to="/kennismakingsgesprek"
-              className="inline-block bg-ocher hover:bg-ocher-dark text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-102 duration-300"
+              className="inline-block bg-ocher hover:bg-ocher-dark text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-102 duration-300"
             >
               Plan een gratis kennismaking
             </Link>

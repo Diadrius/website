@@ -1,30 +1,66 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { themes } from '../themes';
+import { loadMarkdownPage, PageData } from '../utils/markdown';
 
 const HomePage: React.FC = () => {
+  const [pageData, setPageData] = useState<PageData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadMarkdownPage('home')
+      .then(data => {
+        setPageData(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to load page:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg text-text-light">Loading...</p>
+      </div>
+    );
+  }
+
+  if (!pageData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg text-red-600">Error loading page content</p>
+      </div>
+    );
+  }
+
   return (
     <>
       {/* Hero Section */}
       <section className="relative bg-soft-green-light py-24 sm:py-32 lg:py-40">
         <div className="absolute inset-0">
-            <img src="lotte_header.jpg" alt="Achtergrondafbeelding voor de coachingpraktijk van Lotte Gasenbeek" className="w-full h-full object-cover opacity-20"/>
+            <img 
+              src={pageData.heroImage} 
+              alt={pageData.heroImageAlt} 
+              className="w-full h-full object-cover opacity-20"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-cream from-33% via-cream/30 via-66% to-transparent"></div>
         </div>
         <div className="container mx-auto px-6 text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-dark-green tracking-tight animate-fade-in-down" style={{ animationDelay: '0.2s' }}>
-            Ruimte voor jouw verhaal
+            {pageData.title}
           </h1>
           <p className="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-text-light leading-8 animate-fade-in-down" style={{ animationDelay: '0.4s' }}>
-            Psychologische coaching voor jongvolwassenen en young professionals. Samen vinden we de balans die bij jou past, in een warme, persoonlijke en gelijkwaardige sfeer.
+            {pageData.subtitle}
           </p>
           <div className="mt-10">
             <Link
-              to="/kennismakingsgesprek"
+              to={pageData.ctaLink || '/kennismakingsgesprek'}
               className="inline-block bg-ocher hover:bg-ocher-dark text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-102 duration-300 animate-fade-in-down"
               style={{ animationDelay: '0.6s' }}
             >
-              Plan een gratis kennismaking
+              {pageData.ctaText}
             </Link>
           </div>
         </div>
@@ -55,16 +91,20 @@ const HomePage: React.FC = () => {
       {/* "Voor wie?" Section */}
       <section className="pt-10 pb-20 bg-cream">
         <div className="container mx-auto px-6 text-center">
-            <h2 className="text-3xl font-serif font-bold text-dark-green sm:text-4xl">Herken jij je hierin?</h2>
+            <h2 className="text-3xl font-serif font-bold text-dark-green sm:text-4xl">
+              {pageData.sectionTitle}
+            </h2>
             <p className="mt-4 text-lg text-text-light max-w-3xl mx-auto">
-              Worstel je met vragen over wie je bent, wat je wilt, of hoe je omgaat met de druk van het dagelijks leven? Je bent niet alleen.
+              {pageData.sectionText}
             </p>
         </div>
         
         {/* Themes Section */}
         <div className="mt-16">
             <div className="container mx-auto px-6 text-center">
-                <h3 className="text-2xl font-serif font-semibold text-dark-green mb-8">Thema's</h3>
+                <h3 className="text-2xl font-serif font-semibold text-dark-green mb-8">
+                  {pageData.themesTitle}
+                </h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-6 sm:px-8 md:px-12 justify-items-center">
                 {themes.map((theme) => (

@@ -1,0 +1,38 @@
+media:
+  input: public
+  output: /
+
+content:
+  - name: home
+    label: Home Page
+    type: file
+    path: 'public/content/pages/home.md'
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: subtitle
+        label: Subtitle
+        type: text
+      - name: heroImage
+        label: Hero Image
+        type: string
+      - name: heroImageAlt
+        label: Hero Image Alt Text
+        type: string
+      - name: ctaText
+        label: CTA Button Text
+        type: string
+      - name: ctaLink
+        label: CTA Button Link
+        type: string
+      - name: sectionTitle
+        label: Section Title
+        type: string
+      - name: sectionText
+        label: Section Text
+        type: text
+      - name: themesTitle
+        label: Themes Title
+        type: string

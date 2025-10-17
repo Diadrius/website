@@ -10,7 +10,7 @@ const ContactPage: React.FC = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState('');
+  const [isSubmittedSuccessfully, setIsSubmittedSuccessfully] = useState(false); // New state for success message
 
   useEffect(() => {
     loadMarkdownPage('contact')
@@ -27,7 +27,7 @@ const ContactPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setStatus('');
+    setIsSubmittedSuccessfully(false); // Reset success status on new submission
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -41,13 +41,14 @@ const ContactPage: React.FC = () => {
 
       const result = await response.json();
       if (result.success) {
-        setStatus('Bericht succesvol verzonden!');
-        setFormData({ name: '', email: '', message: '' });
+        setIsSubmittedSuccessfully(true); // Set success status
+        setFormData({ name: '', email: '', message: '' }); // Clear form data
       } else {
-        setStatus('Verzenden mislukt. Probeer het opnieuw.');
+        // Handle submission error, maybe show a temporary error message
+        console.error('Verzenden mislukt:', result);
       }
     } catch (error) {
-      setStatus('Er is een fout opgetreden. Probeer het opnieuw.');
+      console.error('Er is een fout opgetreden bij het verzenden:', error);
     } finally {
       setIsSubmitting(false);
     }
@@ -89,7 +90,8 @@ const ContactPage: React.FC = () => {
         </div>
 
         <div className="mt-16 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Form */}
+            {/* Form or Success Message */}
+            {!isSubmittedSuccessfully ? (
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                     <label htmlFor="name" className="block text-sm font-medium text-dark-green">Naam</label>
@@ -136,8 +138,24 @@ const ContactPage: React.FC = () => {
                         {isSubmitting ? 'Verzenden...' : 'Verstuur'}
                     </button>
                 </div>
-                {status && <p className="text-center text-sm text-text-light">{status}</p>}
             </form>
+          ) : (
+            <div className="flex flex-col items-center justify-center p-8 rounded-xl bg-soft-green-light border border-soft-green">
+              <svg className="w-20 h-20 text-ocher mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h3 className="text-2xl font-serif font-semibold text-dark-green mb-2">Bericht succesvol verzonden!</h3>
+              <p className="text-text-light text-center mb-6">
+                Hartelijk dank voor uw bericht. Ik neem zo spoedig mogelijk contact met u op.
+              </p>
+              <button
+                onClick={() => setIsSubmittedSuccessfully(false)} // Allow sending another message
+                className="bg-ocher hover:bg-ocher-dark text-white font-semibold font-serif py-2 px-4 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300"
+              >
+                Nieuw bericht versturen
+              </button>
+            </div>
+          )}
 
             {/* Info */}
             <div className="bg-soft-green-light p-8 rounded-xl border border-soft-green flex flex-col justify-center">

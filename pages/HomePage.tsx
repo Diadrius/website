@@ -65,17 +65,17 @@ const HomePage: React.FC = () => {
             <div className="container mx-auto px-6 text-center">
                 <h3 className="text-2xl font-serif font-semibold text-dark-green mb-8">Thema's</h3>
             </div>
-            <div className="flex gap-8 overflow-x-auto pb-10 px-6 sm:px-8 md:px-12 lg:justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-6 sm:px-8 md:px-12 justify-items-center">
                 {themes.map((theme) => (
                     <Link
-                        to="/voor-wie"
+                        to={`/voor-wie#${theme.id}`}
                         key={theme.name}
                         aria-label={`Lees meer over het thema ${theme.name}`}
-                        className="group relative flex-shrink-0 w-64 h-80 rounded-2xl shadow-lg hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-ocher/50 transition-all duration-300 ease-in-out overflow-hidden"
+                        className="group relative w-full max-w-sm h-80 rounded-2xl shadow-lg hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-ocher/50 transition-all duration-300 ease-in-out overflow-hidden"
                     >
                         {/* Visible Content */}
                         <div className="absolute inset-0 bg-white flex flex-col items-center justify-center p-6 text-center transition-transform duration-300 group-hover:scale-105">
-                            <div className="flex-shrink-0 w-20 h-20 bg-soft-green-light text-dark-green rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-white group-hover:ring-4 group-hover:ring-soft-green">
+                            <div className="flex-shrink-0 w-24 h-24 bg-soft-green-light text-dark-green rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-white group-hover:ring-4 group-hover:ring-soft-green">
                                 {theme.icon}
                             </div>
                             <h3 className="mt-5 font-serif text-xl font-semibold text-dark-green">{theme.name}</h3>
@@ -91,10 +91,6 @@ const HomePage: React.FC = () => {
                 ))}
             </div>
         </div>
-         <style>{`
-            .overflow-x-auto::-webkit-scrollbar { display: none; }
-            .overflow-x-auto { -ms-overflow-style: none; scrollbar-width: none; }
-        `}</style>
       </section>
     </>
   );

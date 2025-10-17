@@ -2,6 +2,7 @@ import React from 'react';
 import { LuBrain, LuGem, LuPowerOff, LuCloudRain } from 'react-icons/lu'; // Using Lucide Icons for thin style
 
 export interface Theme {
+  id: string; // Add id for URL hash and key
   name: string;
   title: string;
   icon: React.ReactNode;
@@ -11,6 +12,7 @@ export interface Theme {
 
 export const themes: Theme[] = [
     {
+        id: 'stress',
         name: 'Stress',
         title: 'Stress & Draagkracht',
         icon: <LuBrain />,
@@ -18,6 +20,7 @@ export const themes: Theme[] = [
         description: 'Voel je je opgejaagd of overweldigd? We zoeken naar manieren om stress te hanteren, je energie beter te verdelen en een gezonde balans te vinden tussen inspanning en ontspanning.'
     },
     {
+        id: 'zelfvertrouwen',
         name: 'Zelfvertrouwen',
         title: 'Zelfvertrouwen & Zelfbeeld',
         icon: <LuGem />,
@@ -25,6 +28,7 @@ export const themes: Theme[] = [
         description: 'Die innerlijke criticus kan luid zijn. We werken aan het versterken van een milder en realistischer zelfbeeld, zodat je met meer vertrouwen in het leven staat.'
     },
     {
+        id: 'burn-out',
         name: 'Burn-out',
         title: 'Burn-out & Preventie',
         icon: <LuPowerOff />,
@@ -32,6 +36,7 @@ export const themes: Theme[] = [
         description: 'Leer de signalen van overbelasting herkennen en ontdek wat jij nodig hebt om vitaal en veerkrachtig te blijven, zowel op je werk als privé.'
     },
     {
+        id: 'depressie',
         name: 'Depressie',
         title: 'Depressie & Somberheid',
         icon: <LuCloudRain />,

@@ -66,7 +66,7 @@ const ForWhomPage: React.FC = () => {
         </div>
 
         <div className="mt-16 text-center bg-white p-10 rounded-xl max-w-3xl mx-auto shadow-lg">
-          <h3 className="text-2xl font-serif font-semibold text-dark-green">Staat jouw vraag er niet tussen?</h3>
+          <h3 className="text-2xl font-serif font-semibold text-dark-green">Staat jouw thema er niet tussen?</h3>
           <p className="mt-4 text-text-light">Geen zorgen. Ieder verhaal is uniek. Als je voelt dat je hulp kunt gebruiken, ben je van harte welkom. We kunnen tijdens een kennismaking altijd bespreken wat ik voor je kan betekenen.</p>
           <div className="mt-8">
             <Link to="/contact" className="inline-block bg-ocher hover:bg-ocher-dark text-white font-bold font-serif py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300">

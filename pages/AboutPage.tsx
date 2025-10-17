@@ -26,7 +26,7 @@ const AboutPage: React.FC = () => {
 
         <div className="md:col-span-2 space-y-8 text-text-light text-base leading-relaxed">
           <div className="bg-soft-green-light p-8 rounded-xl border border-soft-green">
-            <p className="font-serif text-lg italic text-dark-green">
+            <p className="font-serif text-base italic text-dark-green">
               "In mijn ogen is de therapeutische relatie de kern van verandering. Ik geloof dat je pas echt verder komt als je je veilig, gezien en serieus genomen voelt. Daarom werk ik niet met afstand, maar vanuit gelijkwaardigheid en oprechte betrokkenheid. We zoeken samen uit wat voor jóu werkt – in jouw tempo, op jouw manier."
             </p>
           </div>

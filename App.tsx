@@ -9,6 +9,7 @@ import MethodPage from './pages/MethodPage';
 import ForWhomPage from './pages/ForWhomPage';
 import RatesPage from './pages/RatesPage';
 import ContactPage from './pages/ContactPage';
+import KennismakingsgesprekPage from './pages/KennismakingsgesprekPage';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -34,6 +35,7 @@ function App() {
             <Route path="/voor-wie" element={<ForWhomPage />} />
             <Route path="/tarieven" element={<RatesPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/kennismakingsgesprek" element={<KennismakingsgesprekPage />} />
           </Routes>
         </main>
         <Footer />

@@ -8,6 +8,7 @@ const navLinks = [
   { path: '/werkwijze-en-aanbod', name: 'Werkwijze & Aanbod' },
   { path: '/voor-wie', name: 'Voor wie?' },
   { path: '/tarieven', name: 'Tarieven' },
+  { path: '/kennismakingsgesprek', name: 'Kennismakingsgesprek' },
   { path: '/contact', name: 'Contact' },
 ];
 

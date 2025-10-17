@@ -20,19 +20,19 @@ const RatesPage: React.FC = () => {
         {/* Rates Table */}
         <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
           <div className="divide-y divide-gray-200">
-            <div className="p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center">
-              <div>
-                <h3 className="text-lg font-semibold font-serif text-dark-green">Individuele coachingsessie</h3>
-                <p className="text-text-light mt-1">60 minuten</p>
-              </div>
-              <p className="text-2xl font-bold text-dark-green mt-2 sm:mt-0">€ 80,-</p>
-            </div>
             <div className="p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center bg-soft-green-light">
               <div>
                 <h3 className="text-lg font-semibold font-serif text-dark-green">Vrijblijvend kennismakingsgesprek</h3>
                 <p className="text-text-light mt-1">Online of telefonisch, 20 minuten</p>
               </div>
               <p className="text-2xl font-bold text-dark-green mt-2 sm:mt-0">Gratis</p>
+            </div>
+            <div className="p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+              <div>
+                <h3 className="text-lg font-semibold font-serif text-dark-green">Individuele coachingsessie</h3>
+                <p className="text-text-light mt-1">60 minuten</p>
+              </div>
+              <p className="text-2xl font-bold text-dark-green mt-2 sm:mt-0">€ 80,-</p>
             </div>
           </div>
         </div>

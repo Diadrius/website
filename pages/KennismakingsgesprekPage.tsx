@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 
-const ContactPage: React.FC = () => {
+const KennismakingsgesprekPage: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -13,8 +12,8 @@ const ContactPage: React.FC = () => {
         setStatus('Vul alstublieft alle velden in.');
         return;
     }
-    const subject = `Contactverzoek van ${name}`;
-    const body = `Naam: ${name}\nE-mail: ${email}\n\nBericht:\n${message}`;
+    const subject = `Verzoek kennismakingsgesprek van ${name}`;
+    const body = `Naam: ${name}\nE-mail: ${email}\n\nBericht:\n${message}\n\nL.S., Ik wil graag een gratis en vrijblijvend kennismakingsgesprek inplannen.`;
     window.location.href = `mailto:lottegasenbeek@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setStatus('Bedankt! Je e-mailprogramma wordt geopend om het bericht te versturen.');
     setName('');
@@ -27,10 +26,10 @@ const ContactPage: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl font-serif font-bold text-dark-green sm:text-5xl">
-            Contact
+            Vraag je gratis kennismakingsgesprek aan
           </h1>
           <p className="mt-6 text-lg text-text-light leading-8">
-            Heb je vragen, wil je een afspraak maken of ben je geïnteresseerd in een samenwerking? Neem gerust contact met me op via onderstaand formulier of stuur direct een e-mail. Ik neem zo snel mogelijk contact met je op.
+            Zet de eerste stap door te kiezen voor een gratis en vrijblijvend kennismakingsgesprek. Vul het onderstaande formulier in om direct contact op te nemen. Ik neem zo snel mogelijk contact met je op.
           </p>
         </div>
 
@@ -96,7 +95,7 @@ const ContactPage: React.FC = () => {
                         </div>
                     </div>
                      <div className="flex items-start">
-                        <svg className="w-6 h-6 text-ocher flex-shrink-0 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        <svg className="w-6 h-6 text-ocher flex-shrink-0 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 3 0 002 2z" /></svg>
                         <div>
                             <h4 className="font-semibold text-dark-green">E-mail</h4>
                             <a href="mailto:lottegasenbeek@gmail.com" className="hover:text-ocher transition-colors">lottegasenbeek@gmail.com</a>
@@ -110,4 +109,4 @@ const ContactPage: React.FC = () => {
   );
 };
 
-export default ContactPage;
+export default KennismakingsgesprekPage;

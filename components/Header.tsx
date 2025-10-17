@@ -8,8 +8,8 @@ const navLinks = [
   { path: '/werkwijze-en-aanbod', name: 'Werkwijze & Aanbod' },
   { path: '/voor-wie', name: 'Voor wie?' },
   { path: '/tarieven', name: 'Tarieven' },
-  { path: '/kennismakingsgesprek', name: 'Kennismakingsgesprek' },
   { path: '/contact', name: 'Contact' },
+  { path: '/kennismakingsgesprek', name: 'Plan je gratis kennismaking', isButton: true },
 ];
 
 const Header: React.FC = () => {
@@ -23,6 +23,8 @@ const Header: React.FC = () => {
   
   const closeMenu = () => setIsOpen(false);
 
+  const buttonClasses = "inline-block bg-ocher hover:bg-ocher-dark text-white font-bold py-2 px-6 rounded-full shadow-lg transition-transform transform hover:scale-102 duration-300";
+
   return (
     <header className="bg-cream/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -32,14 +34,25 @@ const Header: React.FC = () => {
         </div>
         <nav className="hidden lg:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              className="text-text-light hover:text-ocher transition-colors duration-300 font-medium"
-              style={({ isActive }) => isActive ? activeLinkStyle : {}}
-            >
-              {link.name}
-            </NavLink>
+            link.isButton ? (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={buttonClasses}
+                onClick={closeMenu}
+              >
+                {link.name}
+              </Link>
+            ) : (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className="text-text-light hover:text-ocher transition-colors duration-300 font-medium"
+                style={({ isActive }) => isActive ? activeLinkStyle : {}}
+              >
+                {link.name}
+              </NavLink>
+            )
           ))}
         </nav>
         <div className="lg:hidden">
@@ -58,15 +71,26 @@ const Header: React.FC = () => {
         <div className="lg:hidden bg-cream shadow-xl absolute w-full left-0">
           <nav className="flex flex-col items-center space-y-6 py-8">
             {navLinks.map((link) => (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                onClick={closeMenu}
-                className="text-text-light text-lg hover:text-ocher transition-colors duration-300 font-medium"
-                style={({ isActive }) => isActive ? activeLinkStyle : {}}
-              >
-                {link.name}
-              </NavLink>
+              link.isButton ? (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={buttonClasses}
+                  onClick={closeMenu}
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <NavLink
+                  key={link.path}
+                  to={link.path}
+                  onClick={closeMenu}
+                  className="text-text-light text-lg hover:text-ocher transition-colors duration-300 font-medium"
+                  style={({ isActive }) => isActive ? activeLinkStyle : {}}
+                >
+                  {link.name}
+                </NavLink>
+              )
             ))}
           </nav>
         </div>

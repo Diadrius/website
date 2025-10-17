@@ -122,18 +122,6 @@ content:
           - name: description
             label: Step Description
             type: text
-      - name: offerTitle
-        label: Offer Title
-        type: string
-      - name: offerName
-        label: Offer Name
-        type: string
-      - name: offerDescription
-        label: Offer Description
-        type: text
-      - name: offerDuration
-        label: Offer Duration
-        type: string
       - name: ctaText
         label: CTA Text
         type: string

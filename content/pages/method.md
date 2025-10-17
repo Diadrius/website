@@ -1,5 +1,5 @@
 ---
-title: "Werkwijze & Aanbod"
+title: "Werkwijze"
 methodTitle: "Hoe gaan we te werk?"
 steps:
   - number: 1
@@ -14,10 +14,6 @@ steps:
   - number: 4
     title: "Jouw Manier"
     description: "Elke sessie is afgestemd op jou. We gebruiken gesprekken, praktische oefeningen en bewezen effectieve methoden uit o.a. de cognitieve gedragstherapie (CGT) en Acceptance and Commitment Therapy (ACT)."
-offerTitle: "Mijn Aanbod"
-offerName: "Individuele Coachingsessie"
-offerDescription: "Een-op-één gesprek gericht op jouw persoonlijke doelen."
-offerDuration: "60 minuten"
 ctaText: "Plan een kennismaking"
 ctaLink: "/contact"
 ---

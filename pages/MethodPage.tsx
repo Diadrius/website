@@ -84,24 +84,6 @@ const MethodPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Aanbod Section */}
-        <section className="bg-white p-8 sm:p-12 rounded-xl shadow-lg border border-gray-200">
-           <h2 className="text-3xl font-serif font-bold text-dark-green text-center mb-8">{pageData.offerTitle}</h2>
-           <div className="flex flex-col md:flex-row items-center justify-center md:justify-between bg-soft-green-light p-6 rounded-lg">
-                <div>
-                    <h3 className="font-serif text-xl font-semibold text-dark-green">{pageData.offerName}</h3>
-                    <p className="text-text-light mt-1">{pageData.offerDescription}</p>
-                </div>
-                <div className="mt-4 md:mt-0 text-lg font-bold text-dark-green">
-                    {pageData.offerDuration}
-                </div>
-            </div>
-            <div className="text-center mt-8">
-              <Link to={pageData.ctaLink} className="inline-block bg-ocher hover:bg-ocher-dark text-white font-semibold font-serif py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300">
-                {pageData.ctaText}
-              </Link>
-            </div>
-        </section>
       </div>
     </PageWrapper>
   );

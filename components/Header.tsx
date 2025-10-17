@@ -5,7 +5,7 @@ import { NavLink, Link } from 'react-router-dom';
 const navLinks = [
   { path: '/', name: 'Home' },
   { path: '/over-lotte', name: 'Over Lotte' },
-  { path: '/werkwijze-en-aanbod', name: 'Werkwijze & Aanbod' },
+  { path: '/werkwijze-en-aanbod', name: 'Werkwijze' },
   { path: '/voor-wie', name: 'Voor wie?' },
   { path: '/tarieven', name: 'Tarieven' },
   { path: '/contact', name: 'Contact' },

@@ -22,7 +22,7 @@ export interface Theme {
 }
 
 // Transform the data to include actual icon components
-export const themes: Theme[] = themesData.map(theme => ({
+export const themes: Theme[] = themesData.themes.map(theme => ({
   ...theme,
   icon: React.createElement(iconMap[theme.icon], {
     strokeWidth: 1,

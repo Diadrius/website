@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
 
         {/* Center Section: Contact and Affiliation */}
         <div className="flex flex-col items-start text-left mb-6 md:mb-0">
-          <p className="mb-1 text-sm text-gray-700">Praktijklocatie: Het Gebouw, Rotterdam</p>
+          <p className="mb-1 text-sm text-gray-700">Praktijklocatie: <a href="https://www.google.com/maps?q=Het+Gebouw" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-ocher transition-colors underline">Het Gebouw, Rotterdam</a></p>
           <p className="mb-1 text-sm text-gray-700">Email: <a href="mailto:info@lottegasenbeek.nl" className="text-gray-700 hover:text-ocher transition-colors">info@lottegasenbeek.nl</a></p>
           <p className="mt-2 text-sm">Aangesloten bij het <a href="https://nip.nl/" target="_blank" rel="noopener noreferrer" className="underline hover:text-ocher transition-colors text-gray-700">Nederlands Instituut van Psychologen (NIP)</a></p>
           <img src="/website/media/images/nip.png" alt="NIP Logo" className="h-9 mt-2" />

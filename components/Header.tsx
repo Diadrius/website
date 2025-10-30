@@ -9,7 +9,7 @@ const navLinks = [
   { path: '/voor-wie', name: 'Voor wie?' },
   { path: '/tarieven', name: 'Tarieven' },
   { path: '/contact', name: 'Contact' },
-  { path: '/kennismakingsgesprek', name: 'Plan je gratis kennismaking', isButton: true },
+  { path: '/kennismakingsgesprek', name: 'Plan je gratis kennismakingsgesprek', isButton: true },
 ];
 
 const Header: React.FC = () => {

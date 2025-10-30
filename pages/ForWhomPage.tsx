@@ -71,7 +71,7 @@ const ForWhomPage: React.FC = () => {
             <button
               key={theme.id}
               onClick={() => handleTabClick(theme.id)}
-              className={`px-6 py-2 rounded-full text-lg font-semibold transition-all duration-300 ease-in-out
+              className={`px-6 py-2 rounded-full text-base font-semibold transition-all duration-300 ease-in-out
                 ${activeTab === theme.id
                   ? 'bg-ocher text-white shadow-md'
                   : 'bg-white text-dark-green hover:bg-soft-green/50 hover:shadow-sm'

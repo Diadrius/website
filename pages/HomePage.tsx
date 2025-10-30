@@ -106,27 +106,27 @@ const HomePage: React.FC = () => {
                   {pageData.themesTitle}
                 </h3>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-6 sm:px-8 md:px-12 justify-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 px-6 sm:px-8 md:px-12 justify-items-center">
                 {themes.map((theme) => (
                     <Link
                         to={`/voor-wie#${theme.id}`}
                         key={theme.name}
                         aria-label={`Lees meer over het thema ${theme.name}`}
-                        className="group relative w-full max-w-sm h-80 rounded-2xl shadow-lg hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-ocher/50 transition-all duration-300 ease-in-out overflow-hidden"
+                        className="group relative w-full max-w-xs h-72 rounded-2xl shadow-lg hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-ocher/50 transition-all duration-300 ease-in-out overflow-hidden"
                     >
                         {/* Visible Content */}
-                        <div className="absolute inset-0 bg-white flex flex-col items-center justify-center p-6 text-center transition-transform duration-300 group-hover:scale-105">
-                            <div className="flex-shrink-0 w-24 h-24 bg-soft-green-light text-dark-green rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-white group-hover:ring-4 group-hover:ring-soft-green">
+                        <div className="absolute inset-0 bg-white flex flex-col items-center justify-center p-4 text-center transition-transform duration-300 group-hover:scale-105">
+                            <div className="flex-shrink-0 w-20 h-20 bg-soft-green-light text-dark-green rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-white group-hover:ring-4 group-hover:ring-soft-green">
                                 {theme.icon}
                             </div>
-                            <h3 className="mt-5 font-serif text-xl font-semibold text-dark-green">{theme.name}</h3>
+                            <h3 className="mt-4 font-serif text-lg font-semibold text-dark-green">{theme.name}</h3>
                         </div>
 
                         {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-dark-green/85 backdrop-blur-[2px] p-6 flex flex-col justify-center items-center text-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
-                            <h3 className="font-serif text-2xl font-semibold">{theme.name}</h3>
-                            <p className="mt-4 text-base font-light flex-grow">{theme.question}</p>
-                            <span className="mt-4 text-sm font-bold text-ocher self-center">Lees meer &rarr;</span>
+                        <div className="absolute inset-0 bg-dark-green/85 backdrop-blur-[2px] p-4 flex flex-col justify-center items-center text-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                            <h3 className="font-serif text-xl font-semibold">{theme.name}</h3>
+                            <p className="mt-3 text-sm font-light flex-grow">{theme.question}</p>
+                            <span className="mt-3 text-xs font-bold text-ocher self-center">Lees meer &rarr;</span>
                         </div>
                     </Link>
                 ))}

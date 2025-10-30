@@ -5,7 +5,7 @@ subtitle: Psychologische coaching voor jongvolwassenen en young professionals.
   gelijkwaardige sfeer.
 heroImage: /media/images/lotte_header.jpg
 heroImageAlt: Achtergrondafbeelding voor de coachingpraktijk van Lotte Gasenbeek
-ctaText: Plan een gratis kennismaking
+ctaText: Plan een gratis kennismakingsgesprek
 ctaLink: /kennismakingsgesprek
 sectionTitle: Herken jij je hierin?
 sectionText: Worstel je met vragen over wie je bent, wat je wilt, of hoe je

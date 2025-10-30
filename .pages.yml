@@ -3,6 +3,46 @@ media:
   output: /media
 
 content:
+  - name: themes
+    label: Themes
+    type: file
+    path: 'themes.tsx'
+    fields:
+      - name: themes
+        label: Theme List
+        type: list
+        fields:
+          - name: id
+            label: ID
+            type: string
+            required: true
+            description: Lowercase identifier for URL (e.g., 'stress', 'perfectionisme')
+          - name: name
+            label: Name
+            type: string
+            required: true
+            description: Display name (e.g., 'Stress', 'Perfectionisme')
+          - name: title
+            label: Full Title
+            type: string
+            required: true
+            description: Full theme title (e.g., 'Stress & Draagkracht')
+          - name: icon
+            label: Icon Name
+            type: string
+            required: true
+            description: 'Icon from Lucide React library. Browse available icons at https://lucide.dev/icons - Use the exact name shown (e.g., Timer, Heart, Target, CloudRain, PowerOff, Sparkles). The icon will be imported automatically.'
+          - name: question
+            label: Question
+            type: string
+            required: true
+            description: Short question displayed on hover (e.g., 'Hoe vind ik rust in de chaos?')
+          - name: description
+            label: Description
+            type: text
+            required: true
+            description: Full description shown on the Voor Wie page
+
   - name: home
     label: Home Page
     type: file

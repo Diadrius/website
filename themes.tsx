@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeartPulse, Sparkles, Shield, Sunrise, CloudRain, PowerOff, Timer } from 'lucide-react'; // Using Lucide Icons from suggestion
+import { HeartPulse, Sparkles, Shield, Sunrise, CloudRain, PowerOff, Timer, Target, Heart } from 'lucide-react'; // Using Lucide Icons from suggestion
 
 export interface Theme {
   id: string; // Add id for URL hash and key
@@ -42,5 +42,21 @@ export const themes: Theme[] = [
         icon: <CloudRain strokeWidth={1} className="w-12 h-12" />,
         question: 'Voel je je somber of leeg?',
         description: 'Depressie is meer dan alleen verdrietig zijn; het kan je hele leven beïnvloeden. We onderzoeken samen de dieperliggende oorzaken van je somberheid en vinden wegen naar herstel. Dit omvat het ontwikkelen van copingstrategieën, het aanpakken van negatieve denkpatronen en het vinden van activiteiten die je plezier en zingeving geven. Ons doel is om je te helpen weer lichtpuntjes te zien en een leven op te bouwen dat de moeite waard is om te leven.'
+    },
+    {
+        id: 'perfectionisme',
+        name: 'Perfectionisme',
+        title: 'Perfectionisme & Faalangst',
+        icon: <Target strokeWidth={1} className="w-12 h-12" />,
+        question: 'Wanneer ben ik goed genoeg?',
+        description: 'Stel je onrealistisch hoge eisen aan jezelf en ben je bang om fouten te maken? Perfectionisme kan verlammend werken en leiden tot stress, uitputting en een chronisch gevoel van tekortschieten. We onderzoeken samen waar deze hoge eisen vandaan komen en hoe ze je belemmeren. Je leert realistische doelen te stellen, fouten te zien als leermomenten en te accepteren dat "goed genoeg" vaak meer dan voldoende is. Dit helpt je om vrijer en met meer plezier te leven en werken.'
+    },
+    {
+        id: 'relaties',
+        name: 'Relaties',
+        title: 'Relaties',
+        icon: <Heart strokeWidth={1} className="w-12 h-12" />,
+        question: 'Waarom voel ik me zo onzeker in relaties?',
+        description: 'Merk je dat je steeds terugvalt in dezelfde patronen in je relaties, of worstelt je met intimiteit, grenzen of verlatingsangst? Je hechtingsstijl, gevormd in je vroege jeugd, speelt een belangrijke rol in hoe je met anderen omgaat. Door inzicht te krijgen in je hechtingspatronen leer je waarom je bepaalde relaties aantrekt of mijdt. We werken aan het ontwikkelen van gezondere relatiepatronen, zodat je meer verbinding kunt maken en volwaardige, wederzijdse relaties kunt aangaan.'
     },
 ];

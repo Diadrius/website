@@ -33,7 +33,7 @@ content:
             label: Icon Name
             type: string
             required: true
-            description: "Icon from Lucide React (https://lucide.dev/icons). Use exact icon name. Examples: 'Timer', 'Sparkles', 'PowerOff', 'CloudRain', 'Target', 'Heart'. The icon component will be imported automatically."
+            description: "Icon from Lucide React. Choose from available icons: Timer, Sparkles, PowerOff, CloudRain, Target, Heart, Brain, Lightbulb, Shield, Smile, Sun, Moon, Star, Zap, TrendingUp, Users, User, Compass, Eye, Flame, Leaf, Mountain, Waves, Wind, Coffee, Book, Briefcase, Award, Flag, MessageCircle, Phone, Music, Headphones, Palmtree, Flower, TreePine, Feather, Anchor, Battery, Gem, Key, Lock, Unlock, Activity, Crosshair, Focus, Gauge, Sparkle, Sunrise. Use the exact icon name as listed."
           - name: question
             label: Question
             type: string

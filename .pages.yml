@@ -5,39 +5,45 @@ media:
 content:
   - name: themes
     label: Themes
-    type: list
-    path: 'themes.tsx'
+    type: file
+    path: 'themes.json'
+    format: json
     fields:
-      - name: id
-        label: ID
-        type: string
-        required: true
-        description: "Lowercase identifier for URLs. Examples: 'stress', 'zelfvertrouwen', 'burn-out', 'depressie', 'perfectionisme', 'relaties'"
-      - name: name
-        label: Name
-        type: string
-        required: true
-        description: "Short display name. Examples: 'Stress', 'Zelfvertrouwen', 'Burn-out', 'Depressie', 'Perfectionisme', 'Relaties'"
-      - name: title
-        label: Full Title
-        type: string
-        required: true
-        description: "Complete theme title. Examples: 'Stress & Draagkracht', 'Zelfvertrouwen & Zelfbeeld', 'Burn-out & Preventie', 'Depressie & Somberheid', 'Perfectionisme & Faalangst', 'Relaties'"
-      - name: icon
-        label: Icon Name
-        type: string
-        required: true
-        description: "Icon from Lucide React (https://lucide.dev/icons). Use exact icon name. Examples: 'Timer', 'Sparkles', 'PowerOff', 'CloudRain', 'Target', 'Heart'. The icon component will be imported automatically."
-      - name: question
-        label: Question
-        type: string
-        required: true
-        description: "Short question shown on card hover. Examples: 'Hoe vind ik rust in de chaos?', 'Waarom ben ik zo kritisch op mezelf?', 'Wanneer ben ik goed genoeg?', 'Waarom voel ik me zo onzeker in relaties?'"
-      - name: description
-        label: Description
-        type: text
-        required: true
-        description: "Full explanation shown on Voor Wie page. Describe the theme, what issues it addresses, and how coaching can help."
+      - name: themes
+        label: Themes
+        type: object
+        list: true
+        fields:
+          - name: id
+            label: ID
+            type: string
+            required: true
+            description: "Lowercase identifier for URLs. Examples: 'stress', 'zelfvertrouwen', 'burn-out', 'depressie', 'perfectionisme', 'relaties'"
+          - name: name
+            label: Name
+            type: string
+            required: true
+            description: "Short display name. Examples: 'Stress', 'Zelfvertrouwen', 'Burn-out', 'Depressie', 'Perfectionisme', 'Relaties'"
+          - name: title
+            label: Full Title
+            type: string
+            required: true
+            description: "Complete theme title. Examples: 'Stress & Draagkracht', 'Zelfvertrouwen & Zelfbeeld', 'Burn-out & Preventie', 'Depressie & Somberheid', 'Perfectionisme & Faalangst', 'Relaties'"
+          - name: icon
+            label: Icon Name
+            type: string
+            required: true
+            description: "Icon from Lucide React (https://lucide.dev/icons). Use exact icon name. Examples: 'Timer', 'Sparkles', 'PowerOff', 'CloudRain', 'Target', 'Heart'. The icon component will be imported automatically."
+          - name: question
+            label: Question
+            type: string
+            required: true
+            description: "Short question shown on card hover. Examples: 'Hoe vind ik rust in de chaos?', 'Waarom ben ik zo kritisch op mezelf?', 'Wanneer ben ik goed genoeg?', 'Waarom voel ik me zo onzeker in relaties?'"
+          - name: description
+            label: Description
+            type: text
+            required: true
+            description: "Full explanation shown on Voor Wie page. Describe the theme, what issues it addresses, and how coaching can help."
 
   - name: home
     label: Home Page
@@ -102,7 +108,8 @@ content:
         type: string
       - name: educationItems
         label: Education Items
-        type: list
+        type: object
+        list: true
         fields:
           - name: item
             label: Item
@@ -147,7 +154,8 @@ content:
         type: string
       - name: steps
         label: Steps
-        type: list
+        type: object
+        list: true
         fields:
           - name: number
             label: Number

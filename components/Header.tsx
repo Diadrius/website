@@ -23,7 +23,7 @@ const Header: React.FC = () => {
   
   const closeMenu = () => setIsOpen(false);
 
-  const buttonClasses = "inline-block bg-ocher hover:bg-ocher-dark text-white font-semibold py-2 px-6 rounded-full shadow-lg transition-transform transform hover:scale-102 duration-300";
+  const buttonClasses = "inline-block bg-ocher hover:bg-ocher-dark text-white font-semibold text-sm py-2 px-6 rounded-full shadow-lg transition-transform transform hover:scale-102 duration-300";
 
   return (
     <header className="bg-cream/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">

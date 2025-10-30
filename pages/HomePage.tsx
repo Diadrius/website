@@ -57,7 +57,7 @@ const HomePage: React.FC = () => {
           <div className="mt-10">
             <Link
               to={pageData.ctaLink || '/kennismakingsgesprek'}
-              className="inline-block bg-ocher hover:bg-ocher-dark text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-102 duration-300 animate-fade-in-down"
+              className="inline-block bg-ocher hover:bg-ocher-dark text-white font-semibold text-sm py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-102 duration-300 animate-fade-in-down"
               style={{ animationDelay: '0.6s' }}
             >
               {pageData.ctaText}

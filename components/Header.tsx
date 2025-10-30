@@ -30,7 +30,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <div className="text-lg md:text-xl font-serif font-semibold text-dark-green tracking-wide">
           <Link to="/" onClick={closeMenu}>Lotte Gasenbeek</Link>
-          <span className="block text-xs font-sans text-text-light">Psychologische Coaching</span>
+          <span className="block text-xs font-sans text-text-light">Psychologische Begeleiding</span>
         </div>
         <nav className="hidden lg:flex items-center space-x-8">
           {navLinks.map((link) => (
